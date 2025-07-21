@@ -1,26 +1,31 @@
 console.log("Starting a new project!");
 const express = require('express');
 const app = express();
-const {adminAuth,userAuth } = require('./middlewares/auth');
 const port = 7777;
 
-app.use("/admin", adminAuth);
-
-app.post("/user/login", (req,res)=>{
-  res.send("user logged in successfully!");
+app.use("/",(err, req, res, next) => {
+  if(err) {
+    // Log your error
+    res.status(500).send("something went wrong");
+  }
 });
 
-app.get("/user", userAuth, (req, res) => {
+app.get("/getUserData", (req, res) => {
+  //try{
+    // Logic of DB call and get user data
+  throw new Error("lkajkljlk");
   res.send("User Data Sent");
+ // } catch (err) {
+  //  res.status(500).send("Some Error contact support team");
+ // }  
 });
 
-app.get('/admin/getAllData',(req,res,next) => { 
-  console.log("admin get all data route 2 nd level");
-  res.send("send admin data");
-})
-app.get('/admin/deleteUser',(req,res,next) => {  
-  res.send("Deleted a user");
-})
+app.use("/",(err, req, res, next) => {
+  if(err) {
+    // Log your error
+    res.status(500).send("something went wrong");
+  }
+});
 
 
 app.listen(port, () => {
