@@ -45,7 +45,7 @@ const userSchema = mongoose.Schema({
     },
     photoUrl: {
         type: String,
-        default:"https://geography ",
+        default:"https://geography.com",
          validate(value) {
             if(!validator.isURL(value)){
                 throw new Error("Invalid URL"+ value);
